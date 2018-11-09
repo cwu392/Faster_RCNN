@@ -7,12 +7,12 @@ output_file_name = sys.argv[2]
 
 tree = ET.parse(annotation_file)
 root = tree.getroot()
-print(root.tag)
+# print(root.tag)
 
-for child in root:
-	for grandchild in child:
-		if grandchild.tag=="File":
-			print(grandchild.text)
+# for child in root:
+# 	for grandchild in child:
+# 		if grandchild.tag=="File":
+# 			print(grandchild.text)
 
 frameList = []
 
@@ -38,7 +38,7 @@ for child in root:
 			frameDict["RoIs"] = bboxstring
 			frameList.append({"frame_number":filename, "RoIs": bboxstring})#, "Sign IDs": signIds, "Sign Classes": signClasses})
 
-print(frameList)
+# print(frameList)
 data = {"output": {"frames":frameList}}
 with open(output_file_name, 'w') as outfile:
     json.dump(data, outfile, sort_keys=True, indent=4 * '')
